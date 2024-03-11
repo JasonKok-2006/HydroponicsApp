@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NightShift.MainPage">
+
+    <ScrollView>
+        <AbsoluteLayout BackgroundColor="White">
+            
+            <!--Logo Branding-->
+            <Image Source="logo.svg" AbsoluteLayout.LayoutBounds="230, 22, 160, 40"/>
+
+            <!--This is the pump button-->
+            <ImageButton Source="pumpoff.svg" AbsoluteLayout.LayoutBounds="105, 300, 200, 300" x:Name="PumpControl" Clicked="PumpControl_Clicked"/>
+
+            <!--General text indicators-->
+            <BoxView Color="LightGray"  AbsoluteLayout.LayoutBounds="105, 200, 200, 50"/>
+            <Label Text="Pump Control" TextColor="Black" AbsoluteLayout.LayoutBounds="105, 200, 200, 50" FontSize="24" FontFamily="Arial" VerticalOptions="Center" HorizontalOptions="Center" />
+            <Border AbsoluteLayout.LayoutBounds="105, 200, 200, 50"/>
+
+            <Label Text="The pump is currently turned off." TextColor="Black" FontSize="12" AbsoluteLayout.LayoutBounds="110, 580, 200, 20" x:Name="PumpLabel"/>
+            <!--<Border AbsoluteLayout.LayoutBounds="90, 310, 230, 300"/>-->
+
+            <!--This is the menu icon-->
+            <BoxView AbsoluteLayout.LayoutBounds="20, 20, 40, 40" Color="White" x:Name="dotsBg"/>
+            <ImageButton Source="threedotx.svg" AbsoluteLayout.LayoutBounds="25, 25, 30, 30" Rotation="90" x:Name="dots" Clicked="Dots_Clicked"/>
+            <Border AbsoluteLayout.LayoutBounds="20, 20, 40, 40"/>
+
+            <!--This is the settings icon-->
+            <BoxView AbsoluteLayout.LayoutBounds="20, 75, 40, 40" Color="White" x:Name="gearBg"/>
+            <ImageButton Source="gear.svg" AbsoluteLayout.LayoutBounds="25, 80, 30, 30" x:Name="gear" Clicked="Gear_Clicked" IsVisible="False" IsEnabled="False"/>
+            <Border AbsoluteLayout.LayoutBounds="20, 75, 40, 40" x:Name="border1" IsVisible="False"/>
+
+            <!--This is the graph icon-->
+            <BoxView AbsoluteLayout.LayoutBounds="20, 130, 40, 40" Color="White" x:Name="graphBg"/>
+            <ImageButton Source="graph.svg" AbsoluteLayout.LayoutBounds="25, 135, 30, 30" x:Name="graph" Clicked="Graph_Clicked" IsVisible="False" IsEnabled="False"/>
+            <Border AbsoluteLayout.LayoutBounds="20, 130, 40, 40" x:Name="border2" IsVisible="False"/>
+
+            <!--This is the footer-->
+            <!--Boxes-->
+            <BoxView BackgroundColor="LightGrey" AbsoluteLayout.LayoutBounds="0, 770, 102, 70"/>
+            <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="103, 770, 102, 70"/>
+            <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="206, 770, 102, 70"/>
+            <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="309, 770, 102, 70"/>
+
+            <!--ImageButtons-->
+            <ImageButton Source="powerpage.svg" AbsoluteLayout.LayoutBounds="6, 780, 90, 40" x:Name="PumpPump" Clicked="PumpPump_Clicked"/>
+            <ImageButton Source="temperaturepagenull.svg"  AbsoluteLayout.LayoutBounds="109, 780, 90, 40" x:Name="PumpTemperature" Clicked="PumpTemperature_Clicked"/>
+            <ImageButton Source="humiditypagenull.svg" AbsoluteLayout.LayoutBounds="212, 780, 90, 40" x:Name="PumpHumidity" Clicked="PumpHumidity_Clicked"/>
+            <ImageButton Source="levelpagenull.svg" AbsoluteLayout.LayoutBounds="315, 780, 90, 40" x:Name="PumpLevel" Clicked="PumpLevel_Clicked"/>
+
+            <!--Borders-->
+            <Border AbsoluteLayout.LayoutBounds="0, 770, 411, 70"/>
+
+            <!--Text Labels-->
+            <Label Text="Pump" FontSize="12" FontFamily="Arial" TextColor="White" AbsoluteLayout.LayoutBounds="0, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Text="Temperature" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="103, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Text="Humidity" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="206, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Text="Water Level" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="309, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+
+        </AbsoluteLayout>
+    </ScrollView>
+
+
+</ContentPage>

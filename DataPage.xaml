@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NightShift.DataPage"
+             Shell.NavBarIsVisible="False">
+
+
+    <AbsoluteLayout BackgroundColor="White">
+
+        <!--Logo Branding-->
+        <Image Source="logo.svg" AbsoluteLayout.LayoutBounds="230, 22, 160, 40"/>
+
+        <!--Setting page header text-->
+        <Label Text="DataPage" FontFamily="Arial" AbsoluteLayout.LayoutBounds="100, 200, 200, 60" FontSize="24" TextColor="Black" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" BackgroundColor="Gainsboro"/>
+        <Border AbsoluteLayout.LayoutBounds="100, 200, 200, 60"/>
+
+        <!--back button-->
+        <BoxView AbsoluteLayout.LayoutBounds="20, 20, 40, 40" x:Name="DPBB" Color="White"/>
+        <ImageButton Source="backarrow.svg" AbsoluteLayout.LayoutBounds="25, 25, 30, 30" x:Name="Backarrow_DataPage" Clicked="Backarrow_DataPage_Clicked"/>
+        <Border AbsoluteLayout.LayoutBounds="20, 20, 40, 40"/>
+
+    </AbsoluteLayout>
+</ContentPage>
