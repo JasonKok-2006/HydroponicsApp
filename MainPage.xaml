@@ -18,7 +18,10 @@
             <Border AbsoluteLayout.LayoutBounds="105, 200, 200, 50"/>
 
             <Label Text="The pump is currently turned off." TextColor="Black" FontSize="12" AbsoluteLayout.LayoutBounds="110, 580, 200, 20" x:Name="PumpLabel"/>
-            <!--<Border AbsoluteLayout.LayoutBounds="90, 310, 230, 300"/>-->
+            <Label Text="You can turn the pump on." TextColor="Green" FontSize="12" AbsoluteLayout.LayoutBounds="90, 600, 220, 20" x:Name="Locker" HorizontalOptions="Center"/>
+            <Label Text="Note: if the pump is turned on/off, there is a 15 second" TextColor="Red" FontSize="12" AbsoluteLayout.LayoutBounds="50, 680, 310, 20" HorizontalOptions="Center"/>
+            <Label Text="lock before any other action can be performed." TextColor="Red" FontSize="12" AbsoluteLayout.LayoutBounds="50, 700, 310, 20" HorizontalOptions="Center"/>
+            <Label Text="This includes the initial launch of the app." TextColor="Red" FontSize="12" AbsoluteLayout.LayoutBounds="50, 720, 310, 20" HorizontalOptions="Center"/>
 
             <!--This is the menu icon-->
             <BoxView AbsoluteLayout.LayoutBounds="20, 20, 40, 40" Color="White" x:Name="dotsBg"/>

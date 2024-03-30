@@ -19,6 +19,7 @@ public partial class Temperature : ContentPage
     public int dotClickCount = 0;
     public double temperatureValue = 0;
     public double redBarHeight = 0;
+    public int sentData = 0;
 
     private System.Timers.Timer aTimer = new System.Timers.Timer(20000);
 
@@ -63,7 +64,7 @@ public partial class Temperature : ContentPage
         InitializeComponent();
 
         // Call the method to make a GET request. This also updates the user interface.
-        MakeGetRequest(CurrentTemp, RedBar, BlankSpace, tip, temperatureValue, redBarHeight);
+        MakeGetRequest(CurrentTemp, RedBar, BlankSpace, tip, temperatureValue, redBarHeight, Description);
 
 
         //gets timer to run repeat
@@ -73,7 +74,7 @@ public partial class Temperature : ContentPage
 
     //this is a public method this allows it to be used from outside of the class, there are 2 arguments for lables
     //add more if you need to or remove if you need to. 
-    public static async void MakeGetRequest(Label lableName, BoxView red, BoxView white, Ellipse tip, double value, double height)
+    public static async void MakeGetRequest(Label lableName, BoxView red, BoxView white, Ellipse tip, double value, double height, Label Describe)
     {
         // Replace "https://api.example.com" with the actual URL you want to send the GET request to
         string apiUrl = "https://api.thingspeak.com/channels/2365673/feeds.json?api_key=O4WHET556WZUT8BA&results=2";
@@ -112,13 +113,26 @@ public partial class Temperature : ContentPage
                         // assigns the text of the lable you pass through to the previous data point 
                         lableName.Text = "The Current GreenHouse Temperature is " + Convert.ToString(deserialisedContent.feeds[last - 2].field3) + "°C";
                         value = Convert.ToDouble(deserialisedContent.feeds[last - 2].field3);
+
+
+                        //the value variable is too calculate the height of the thermometer graphic.
                         if (value < 0)
                         {
+                            Describe.Text = "The greenhouse needs to be warmer to make sure that the plants will photsynthesise properly.";
                             value = 0;
                         }
                         else if (value > 40)
                         {
+                            Describe.Text = "The greenhouse is too hot. Cool it down to make sure that the plants do not dehydrate.";
                             value = 40;
+                        }
+                        else if (value < 24)
+                        {
+                            Describe.Text = "The greenhouse needs to be warmer to make sure that the plants will photsynthesise properly.";
+                        }
+                        else if (value > 29)
+                        {
+                            Describe.Text = "The greenhouse is too hot. Cool it down to make sure that the plants do not dehydrate.";
                         }
 
                         // Update UI elements
@@ -132,13 +146,29 @@ public partial class Temperature : ContentPage
                         // assigns the text of the lable you pass through to the latest data point
                         lableName.Text = "The Current GreenHouse Temperature is " + Convert.ToString(deserialisedContent.feeds[last - 1].field3) + "°C";
                         value = Convert.ToDouble(deserialisedContent.feeds[last - 1].field3);
+
+                        //the value variable is too calculate the height of the thermometer graphic.
                         if (value < 0)
                         {
+                            Describe.Text = "The greenhouse needs to be warmer to make sure that the plants will photsynthesise properly.";
                             value = 0;
                         }
                         else if (value > 40)
                         {
+                            Describe.Text = "The greenhouse is too hot. Cool it down to make sure that the plants do not dehydrate.";
                             value = 40;
+                        }
+                        else if (value < 24)
+                        {
+                            Describe.Text = "The greenhouse needs to be warmer to make sure that the plants will photsynthesise properly.";
+                        }
+                        else if (value > 29)
+                        {
+                            Describe.Text = "The greenhouse is too hot. Cool it down to make sure that the plants do not dehydrate.";
+                        }
+                        else
+                        {
+                            Describe.Text = "The temperature is at an optimal level.";
                         }
 
                         // Update UI elements
@@ -191,7 +221,7 @@ public partial class Temperature : ContentPage
         MainThread.BeginInvokeOnMainThread(() =>
         {
             // Call the method to make a GET request. This also updates the user interface.
-            MakeGetRequest(CurrentTemp, RedBar, BlankSpace, tip, temperatureValue, redBarHeight);
+            MakeGetRequest(CurrentTemp, RedBar, BlankSpace, tip, temperatureValue, redBarHeight, Description);
         });
 
     }

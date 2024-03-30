@@ -64,13 +64,13 @@ public partial class WaterLevel : ContentPage
 
         switch(LevelLabel.Text)
         {
-            case "The water level is currently high":
+            case "The water level is currently high.":
                 Level.Source = "waterlevelhigh.svg";
                 break;
-            case "The water level is currently mid":
+            case "The water level is currently mid.":
                 Level.Source = "waterlevelmid.svg";
                 break;
-            case "The water level is currently low":
+            case "The water level is currently low.":
                 Level.Source = "waterlevelmlow.svg";
                 break;
         }
@@ -163,10 +163,10 @@ public partial class WaterLevel : ContentPage
 
                     switch (FL1 + FL2)
                     {
-                        case > 1:
+                        case > 1.5:
                             lableName.Text = "The water level is currently high.";
                             break;
-                        case > 0:
+                        case > 0.5:
                             lableName.Text = "The water level is currently mid.";
                             break;
                         default:

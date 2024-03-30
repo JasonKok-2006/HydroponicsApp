@@ -59,8 +59,21 @@
         
         <!--Value Display-->
         <BoxView AbsoluteLayout.LayoutBounds="25, 480, 360, 50" BackgroundColor="AliceBlue"/>
-        <Label AbsoluteLayout.LayoutBounds="30, 480, 350, 50" Text="Humidity" FontSize="18" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="HumidityDisplay"/>
+        <Label AbsoluteLayout.LayoutBounds="30, 480, 350, 50" Text="Humidity" FontSize="20" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="HumidityDisplay"/>
         <Border AbsoluteLayout.LayoutBounds="25, 480, 360, 50"/>
-        
+
+        <BoxView AbsoluteLayout.LayoutBounds="25, 550, 170, 200" BackgroundColor="AliceBlue"/>
+        <Border AbsoluteLayout.LayoutBounds="25, 550, 170, 200"/>
+        <Label AbsoluteLayout.LayoutBounds="25, 615, 170, 30" Text="Optimal" FontSize="20" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+        <Label AbsoluteLayout.LayoutBounds="25, 640, 170, 30" Text="Humidity:" FontSize="20" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+        <Label AbsoluteLayout.LayoutBounds="25, 665, 170, 30" Text="40-60%" FontSize="20" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+
+        <BoxView AbsoluteLayout.LayoutBounds="214, 550, 170, 200" BackgroundColor="AliceBlue"/>
+        <Border AbsoluteLayout.LayoutBounds="214, 550, 170, 200"/>
+        <Label AbsoluteLayout.LayoutBounds="214, 615, 170, 30" Text="" FontSize="18" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="Description"/>
+        <Label AbsoluteLayout.LayoutBounds="214, 640, 170, 30" Text="Optimal Level" FontSize="18" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="Growth1"/>
+        <Label AbsoluteLayout.LayoutBounds="214, 665, 170, 30" Text="" FontSize="18" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="Growth2"/>
+
+
     </AbsoluteLayout>
 </ContentPage>

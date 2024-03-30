@@ -33,9 +33,13 @@
 
         <BoxView AbsoluteLayout.LayoutBounds="160, 360, 230, 100" Color="LightPink"/>
         <Border AbsoluteLayout.LayoutBounds="160, 360, 230, 100"/>
+        <Label AbsoluteLayout.LayoutBounds="165, 350, 220, 100" Text="Optimal Temperatures:" TextColor="Maroon" FontSize="20" FontFamily="Arial" VerticalOptions="Center" HorizontalOptions="Center"/>
+        <Label AbsoluteLayout.LayoutBounds="165, 370, 220, 100" Text="24-29°C" TextColor="Maroon" FontSize="20" FontFamily="Arial" VerticalOptions="Center" HorizontalOptions="Center"/>
+
 
         <BoxView AbsoluteLayout.LayoutBounds="160, 500, 230, 200" Color="LightPink"/>
         <Border AbsoluteLayout.LayoutBounds="160, 500, 230, 200"/>
+        <Label AbsoluteLayout.LayoutBounds="165, 505, 220, 190" Text="The temperature is at an optimal level." TextColor="Maroon" FontSize="20" FontFamily="Arial" VerticalOptions="Center" HorizontalOptions="Center" x:Name="Description"/>
 
 
         <!--This is the menu icon-->

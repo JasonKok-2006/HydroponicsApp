@@ -60,7 +60,7 @@ public partial class Humidity : ContentPage
     {
         InitializeComponent();
 
-        MakeGetRequest(HumidityDisplay, humidity, rotator, rotatorReset, Pointer);
+        MakeGetRequest(HumidityDisplay, humidity, rotator, rotatorReset, Pointer, Description, Growth1, Growth2);
 
 
         //rotator calculation
@@ -103,7 +103,7 @@ public partial class Humidity : ContentPage
         }
     }
 
-    public static async void MakeGetRequest(Label lableName, double humidityValue, double rotatorValue, double resetValue, Image pic)
+    public static async void MakeGetRequest(Label lableName, double humidityValue, double rotatorValue, double resetValue, Image pic, Label Describe, Label Growth1, Label Growth2)
     {
         // Replace "https://api.example.com" with the actual URL you want to send the GET request to
         string apiUrl = "https://api.thingspeak.com/channels/2365673/feeds.json?api_key=O4WHET556WZUT8BA&results=2";
@@ -154,6 +154,26 @@ public partial class Humidity : ContentPage
 
                         //this will rotate the pointer
                         await pic.RotateTo(rotatorValue);
+
+                        //Description texts for according to the value
+                        if (humidityValue < 40)
+                        {
+                            Describe.Text = "Too Dry";
+                            Growth1.Text = "Possible Growth:";
+                            Growth2.Text = "Bacteria + Viruses";
+                        }
+                        else if(humidityValue > 60)
+                        {
+                            Describe.Text = "Too Humid";
+                            Growth1.Text = "Possible Growth:";
+                            Growth2.Text = "Fungi + Dust Mites";
+                        }
+                        else
+                        {
+                            Describe.Text = "";
+                            Growth1.Text = "Optimal Level";
+                            Growth2.Text = "";
+                        }
 
                     }
                     else
@@ -211,7 +231,7 @@ public partial class Humidity : ContentPage
 
     private void hTimerEvent(object? sender, ElapsedEventArgs e)
     {
-        MakeGetRequest(HumidityDisplay, humidity, rotator, rotatorReset, Pointer);
+        MakeGetRequest(HumidityDisplay, humidity, rotator, rotatorReset, Pointer, Description, Growth1, Growth2);
 
         //humidity = Convert.ToDouble(valueStore.Text);
 
