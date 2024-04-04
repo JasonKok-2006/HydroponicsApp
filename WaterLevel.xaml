@@ -54,7 +54,7 @@
 
         <!--visuals-->
         <Image AbsoluteLayout.LayoutBounds="20, 300, 300, 300" x:Name="Level" Source="waterlevelhigh.svg"/>
-        <Label Text="The water level is currently high." TextColor="Black" FontSize="18" AbsoluteLayout.LayoutBounds="55, 620, 300, 20" x:Name="LevelLabel" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <Label Text="The water level is currently high." TextColor="Black" FontSize="18" AbsoluteLayout.LayoutBounds="55, 620, 300, 30" x:Name="LevelLabel" HorizontalOptions="Center" VerticalOptions="Center"/>
     </AbsoluteLayout>
 
 </ContentPage>

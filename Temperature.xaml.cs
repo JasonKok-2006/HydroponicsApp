@@ -10,6 +10,7 @@ using static NightShift.Temperature;
 //using static Android.Provider.Contacts.Intents;
 using Microsoft.Maui.Controls.Shapes;
 using System.Net;
+using Plugin.Maui.Audio;
 
 namespace NightShift;
 
@@ -20,9 +21,12 @@ public partial class Temperature : ContentPage
     public double temperatureValue = 0;
     public double redBarHeight = 0;
     public int sentData = 0;
+    bool bgPlay = true;
 
     private System.Timers.Timer aTimer = new System.Timers.Timer(20000);
 
+    //audioplayer initaliser
+    private readonly IAudioManager audioManager;
 
     public class Rootobject
     {
@@ -59,9 +63,12 @@ public partial class Temperature : ContentPage
     }
 
 
-    public Temperature()
+    public Temperature(IAudioManager audioManager)
     {
         InitializeComponent();
+
+        bgPlay = true;
+        this.audioManager = audioManager;
 
         // Call the method to make a GET request. This also updates the user interface.
         MakeGetRequest(CurrentTemp, RedBar, BlankSpace, tip, temperatureValue, redBarHeight, Description);
@@ -69,7 +76,21 @@ public partial class Temperature : ContentPage
 
         //gets timer to run repeat
         setTimer();
+        backgroundMusic();
+    }
 
+    //ready/refresh sound effect
+    private async void chime()
+    {
+        var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("chime-6346.mp3"));
+        player.Play();
+    }
+
+    //clicker sound effect
+    private async void clicker()
+    {
+        var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("mouse-click-153941.mp3"));
+        player.Play();
     }
 
     //this is a public method this allows it to be used from outside of the class, there are 2 arguments for lables
@@ -205,6 +226,19 @@ public partial class Temperature : ContentPage
         }
     }
 
+    private async void backgroundMusic()
+    {
+        var bgMusic = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("wandering-6394.wav"));
+        if (bgPlay == true)
+        {
+            bgMusic.Play();
+        }
+        else
+        {
+            bgMusic.Stop();
+            //bgMusic.Dispose();
+        }
+    }
 
     private void setTimer()
     {
@@ -215,19 +249,23 @@ public partial class Temperature : ContentPage
     }
 
 
-    private void OnTimedEvent(Object? source, ElapsedEventArgs e)
+    private async void OnTimedEvent(Object? source, ElapsedEventArgs e)
     {
-
+        backgroundMusic();
         MainThread.BeginInvokeOnMainThread(() =>
         {
             // Call the method to make a GET request. This also updates the user interface.
             MakeGetRequest(CurrentTemp, RedBar, BlankSpace, tip, temperatureValue, redBarHeight, Description);
         });
+        chime();
 
     }
 
     private async void TempDots_Clicked(object sender, EventArgs e)
     {
+
+        clicker();
+
         await TempDots.RelRotateTo(90);
         dotClickCount++;
 
@@ -256,6 +294,11 @@ public partial class Temperature : ContentPage
 
     private async void TempGear_Clicked(object sender, EventArgs e)
     {
+
+        clicker();
+        bgPlay = false;
+        backgroundMusic();
+
         TempgearBg.Color = Colors.LightGray;
         await Shell.Current.GoToAsync("Settings");
         TempgearBg.Color = Colors.White;
@@ -263,6 +306,11 @@ public partial class Temperature : ContentPage
 
     private async void TempGraph_Clicked(object sender, EventArgs e)
     {
+
+        clicker();
+        bgPlay = false;
+        backgroundMusic();
+
         TempgraphBg.Color = Colors.LightGray;
         await Shell.Current.GoToAsync("DataPage");
         TempgraphBg.Color = Colors.White;
@@ -270,6 +318,11 @@ public partial class Temperature : ContentPage
 
     private async void TempPump_Clicked(object sender, EventArgs e)
     {
+
+        clicker();
+        bgPlay = false;
+        backgroundMusic();
+
         aTimer.Stop();
         await Shell.Current.GoToAsync("..");
     }
@@ -281,12 +334,22 @@ public partial class Temperature : ContentPage
 
     private async void TempHumidity_Clicked(object sender, EventArgs e)
     {
+
+        clicker();
+        bgPlay = false;
+        backgroundMusic();
+
         aTimer.Stop();
         await Shell.Current.GoToAsync("../Humidity");
     }
 
     private async void TempLevel_Clicked(object sender, EventArgs e)
     {
+
+        clicker();
+        bgPlay = false;
+        backgroundMusic();
+
         aTimer.Stop();
         await Shell.Current.GoToAsync("../WaterLevel");
     }

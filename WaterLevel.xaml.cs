@@ -11,6 +11,7 @@ using static NightShift.WaterLevel;
 using Microsoft.Maui.Controls.Shapes;
 using System.Net;
 using Aspose.Imaging;
+using Plugin.Maui.Audio;
 
 namespace NightShift;
 
@@ -19,8 +20,12 @@ public partial class WaterLevel : ContentPage
     int dotClickCount = 0;
     double floatSwitch1 = 0;
     double floatSwitch2 = 0;
+    bool bgPlay = false;
 
-    private System.Timers.Timer lTimer = new System.Timers.Timer(3000);
+    private System.Timers.Timer lTimer = new System.Timers.Timer(20000);
+
+    //audioplayer initaliser
+    private readonly IAudioManager audioManager;
 
     public class Rootobject
     {
@@ -56,13 +61,14 @@ public partial class WaterLevel : ContentPage
         public string field5 { get; set; }
     }
 
-    public WaterLevel()
+    public WaterLevel(IAudioManager audioManager)
     {
         InitializeComponent();
+        bgPlay = true;
+        this.audioManager = audioManager;
 
-        MakeGetRequest(LevelLabel, floatSwitch1, floatSwitch2);
 
-        switch(LevelLabel.Text)
+        switch (LevelLabel.Text)
         {
             case "The water level is currently high.":
                 Level.Source = "waterlevelhigh.svg";
@@ -76,6 +82,33 @@ public partial class WaterLevel : ContentPage
         }
 
         lvlTimer();
+        backgroundMusic();
+    }
+
+    private async void backgroundMusic()
+    {
+        var bgMusic = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("wandering-6394.wav"));
+        if (bgPlay == true)
+        {
+            bgMusic.Play();
+        }
+        else
+        {
+            bgMusic.Stop();
+            //bgMusic.Dispose();
+        }
+    }
+    private async void chime()
+    {
+        var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("chime-6346.mp3"));
+        player.Play();
+    }
+
+    //clicker sound effect
+    private async void clicker()
+    {
+        var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("mouse-click-153941.mp3"));
+        player.Play();
     }
 
     private void lvlTimer()
@@ -86,7 +119,7 @@ public partial class WaterLevel : ContentPage
         lTimer.Enabled = true;
     }
 
-    private void lTimerEvent(object? sender, ElapsedEventArgs e)
+    private async void lTimerEvent(object? sender, ElapsedEventArgs e)
     {
         MainThread.BeginInvokeOnMainThread(() =>
         {
@@ -106,6 +139,9 @@ public partial class WaterLevel : ContentPage
                     break;
             }
         });
+
+        chime();
+        backgroundMusic();
     }
 
 
@@ -196,6 +232,8 @@ public partial class WaterLevel : ContentPage
 
     private async void LvlDots_Clicked(object sender, EventArgs e)
     {
+        clicker();
+
         await LvlDots.RelRotateTo(90);
         dotClickCount++;
 
@@ -224,6 +262,10 @@ public partial class WaterLevel : ContentPage
 
     private async void LvlGear_Clicked(object sender, EventArgs e)
     {
+        clicker();
+        bgPlay = false;
+        backgroundMusic();
+
         LvlgearBg.Color = Colors.LightGray;
         await Shell.Current.GoToAsync("Settings");
         LvlgearBg.Color = Colors.White;
@@ -231,6 +273,10 @@ public partial class WaterLevel : ContentPage
 
     private async void LvlGraph_Clicked(object sender, EventArgs e)
     {
+        clicker();
+        bgPlay = false;
+        backgroundMusic();
+
         LvlgraphBg.Color = Colors.LightGray;
         await Shell.Current.GoToAsync("DataPage");
         LvlgraphBg.Color = Colors.White;
@@ -238,18 +284,30 @@ public partial class WaterLevel : ContentPage
 
     private async void LvlPump_Clicked(object sender, EventArgs e)
     {
+        clicker();
+        bgPlay = false;
+        backgroundMusic();
+
         lTimer.Stop();
         await Shell.Current.GoToAsync("..");
     }
 
     private async void LvlTemperature_Clicked(object sender, EventArgs e)
     {
+        clicker();
+        bgPlay = false;
+        backgroundMusic();
+
         lTimer.Stop();
         await Shell.Current.GoToAsync("../Temperature");
     }
 
     private async void LvlHumidity_Clicked(object sender, EventArgs e)
     {
+        clicker();
+        bgPlay = false;
+        backgroundMusic();
+
         lTimer.Stop();
         await Shell.Current.GoToAsync("../Humidity");
     }
@@ -259,13 +317,4 @@ public partial class WaterLevel : ContentPage
         //This will not change anything due to it already being on the same page
     }
 
-    private void TempChange_Clicked(object sender, EventArgs e)
-    {
-
-    }
-
-    private void TempChange_Clicked_1(object sender, EventArgs e)
-    {
-
-    }
 }

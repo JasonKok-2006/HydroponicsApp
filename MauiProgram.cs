@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Plugin.Maui.Audio;
 
 namespace NightShift
 {
@@ -15,9 +16,17 @@ namespace NightShift
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-#if DEBUG
-    		builder.Logging.AddDebug();
-#endif
+            builder.Services.AddSingleton(AudioManager.Current);
+            builder.Services.AddSingleton<Settings>();
+            
+
+            builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<Temperature>();
+            builder.Services.AddTransient<Humidity>();
+            builder.Services.AddTransient<WaterLevel>();
+            builder.Services.AddTransient<Credits>();
+            builder.Services.AddTransient<Settings>();
+            builder.Services.AddTransient<DataPage>();
 
             return builder.Build();
         }

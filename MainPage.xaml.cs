@@ -1,21 +1,17 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-using CommunityToolkit.Maui.Markup;
-using System;
+﻿using System;
 using System.Timers;
-using System.Threading.Channels;
 using System.Diagnostics;
-using System.Text.Json;
-using static NightShift.MainPage;
-//using static Android.Provider.Contacts.Intents;
-using Microsoft.Maui.Controls.Shapes;
-using System.Net;
-//using HomeKit;
+using Plugin.Maui.Audio;
+using System.Security.AccessControl;
+using System.Runtime.CompilerServices;
+using System.Reflection;
+using static NightShift.Humidity;
+using static NightShift.Settings;
+
+
 
 namespace NightShift
 {
-
-
     public class Rootobject
     {
         public Channel channel { get; set; }
@@ -46,12 +42,18 @@ namespace NightShift
     {
         //this timer will make sure to make it unable to send a piece of data through to thingspeak
         //due to the 15 second interval it has between being able to send data.
-        public System.Timers.Timer sendTimer = new System.Timers.Timer(15000);
+        private System.Timers.Timer sendTimer = new System.Timers.Timer(15000);
+        private System.Timers.Timer playTimer = new System.Timers.Timer(20000);
+
+
+        //audioplayer initaliser
+        private readonly IAudioManager audioManager;
 
         int dotClickCount = 0;
         public double pumpClickCount = 0;
         int count = 15;
         public string pumpDataSend = "0";
+        bool bgPlay = true;
 
         //an if statement with this boolean is used. if the timer is activated (sendAllowed = false), 
         //the user can not navigate between pages to resolve a bug which would have prohibited any data sent to thiinspeak.
@@ -60,17 +62,80 @@ namespace NightShift
         //string to concatenate at the end of the label. This will be at on/off. telling the user what state the pump is on.  
         string end = "on.";
 
-        public MainPage()
+        public MainPage(IAudioManager audioManager)
         {
             InitializeComponent();
 
+            this.audioManager = audioManager;
 
             //even though this locks the app for the first 15 seconds of the app, it ensures that the pump will always be switched off when the first user input is made.
             SendGetRequest(pumpDataSend);
             SendData();
+            backgroundMusic();
         }
 
-        public void SendData()
+        //background music sound effect
+        private async void backgroundMusic()
+        {
+            var bgMusic = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("wandering-6394.wav"));
+            
+            if (bgPlay == true)
+            {
+                bgMusic.Play();
+            }
+            else
+            {
+                bgMusic.Stop();
+                //bgMusic.Dispose();
+            }
+
+            playTimer.AutoReset = true;
+            playTimer.Enabled = true;
+            playTimer.Elapsed += loopSong;
+            playTimer.Start();
+        }
+
+        private void loopSong(object? sender, ElapsedEventArgs e)
+        {
+            backgroundMusic();
+        }
+
+        //startup sound
+        private async void build()
+        {
+            var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("hammer-6145.wav"));
+            player.Play();
+        }
+
+        //pump turn on sound effect
+        private async void water()
+        {
+            var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("water-125071.wav"));
+            player.Play();
+        }
+
+        //pump turn off sound effect
+        private async void drain()
+        {
+            var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("draining-72763.wav"));
+            player.Play();
+        }
+
+        //ready/refresh sound effect
+        private async void chime()
+        {
+            var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("chime-6346.mp3"));
+            player.Play();
+        }
+
+        //clicker sound effect
+        private async void clicker()
+        {
+            var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("mouse-click-153941.mp3"));
+            player.Play();
+        }
+
+        private async void SendData()
         {
             sendTimer.Start();
             sendTimer.Elapsed += resetAllowance;
@@ -80,20 +145,27 @@ namespace NightShift
             {
                 sendAllowed = false;
                 Locker.Text = "Please wait while we get the app ready.";
+
+                build();
+            }
+            else if(pumpClickCount % 2 == 1)
+            {
+                Locker.Text = "Please wait to turn the pump " + end;
+                water();
             }
             else
             {
                 Locker.Text = "Please wait to turn the pump " + end;
+                drain();
             }
 
         }
 
-        public void resetAllowance(object? sender, ElapsedEventArgs e)
+        private async void resetAllowance(object? sender, ElapsedEventArgs e)
         {
             //this has to be done on main thread to avoid a bug causing a bigger data send delay.
             MainThread.BeginInvokeOnMainThread(() =>
             {
-
                 //this allows the data to be sent again
                 sendAllowed = true;
                 Locker.Text = "You can now turn the pump " + end;
@@ -102,7 +174,11 @@ namespace NightShift
             });
 
             sendTimer.Stop();
+            chime();
+            bgPlay = true;
+            backgroundMusic();
         }
+
 
         //Public method to send data to the API, one string argument for data from user input
         //public allows it to be called from outside of the class 
@@ -139,10 +215,11 @@ namespace NightShift
         }
 
         //Menu icon button event
-        private void Dots_Clicked(object sender, EventArgs e)
+        private async void Dots_Clicked(object sender, EventArgs e)
         {
+            clicker();
 
-            dots.RelRotateTo(90);
+            await dots.RelRotateTo(90);
             dotClickCount++;
 
             if (dotClickCount % 2 == 0)
@@ -171,25 +248,28 @@ namespace NightShift
         //settings button event
         private async void Gear_Clicked(object sender, EventArgs e)
         {
+            clicker();
 
-            if (sendAllowed == true)
-            {
-                gearBg.Color = Colors.LightGray;
-                await Shell.Current.GoToAsync("Settings");
-                gearBg.Color = Colors.White;
-            }
+            bgPlay = false;
+            backgroundMusic();
+
+            gearBg.Color = Colors.LightGray;
+            await Shell.Current.GoToAsync("Settings");
+            gearBg.Color = Colors.White;
+     
         }
 
         //graph button event
         private async void Graph_Clicked(object sender, EventArgs e)
         {
+            clicker();
 
-            if (sendAllowed == true)
-            {
-                graphBg.Color = Colors.LightGray;
-                await Shell.Current.GoToAsync("DataPage");
-                graphBg.Color = Colors.White;
-            }
+            bgPlay = false;
+            backgroundMusic();
+
+            graphBg.Color = Colors.LightGray;
+            await Shell.Current.GoToAsync("DataPage");
+            graphBg.Color = Colors.White;
         }
 
         //currently unused button event
@@ -200,44 +280,45 @@ namespace NightShift
 
         private void PumpPump_Clicked(object sender, EventArgs e)
         {
-
+            bgPlay = false;
+            backgroundMusic();
             //This will not change anything due to it already being on the same page
         }
 
         private async void PumpTemperature_Clicked(object sender, EventArgs e)
         {
-
-            if (sendAllowed == true)
-            {
-                await Shell.Current.GoToAsync(nameof(Temperature));
-            }
+            bgPlay = false;
+            backgroundMusic();
+            clicker();
+            await Shell.Current.GoToAsync(nameof(Temperature));   
         }
 
         private async void PumpHumidity_Clicked(object sender, EventArgs e)
         {
-            //every navigation button has this if statement to protect the navigation routes of the app.
-            if (sendAllowed == true)
-            {
-
-                await Shell.Current.GoToAsync(nameof(Humidity));
-            }
+            bgPlay = false;
+            backgroundMusic();
+            clicker();
+            await Shell.Current.GoToAsync(nameof(Humidity));
         }
 
         private async void PumpLevel_Clicked(object sender, EventArgs e)
         {
-
-            if (sendAllowed == true)
-            {
-                await Shell.Current.GoToAsync(nameof(WaterLevel));
-            }
+            bgPlay = false;
+            backgroundMusic();
+            clicker();
+            await Shell.Current.GoToAsync(nameof(WaterLevel));
         }
 
-        private void PumpControl_Clicked(object sender, EventArgs e)
+        private async void PumpControl_Clicked(object sender, EventArgs e)
         {
+            bgPlay = false;
+            backgroundMusic();
 
             //this stops the dta from being meesed up if the button is pressed multiple times.
             if (sendAllowed == true)
             {
+                clicker();
+
                 //this will make sure that the data can not be sent (as there is a 15 second time cooldown to send the data to the channel).
                 sendAllowed = false;
 
@@ -258,14 +339,22 @@ namespace NightShift
                 {
                     PumpControl.Source = "pumpon.svg";
                     PumpLabel.Text = "The pump is currently turned on.";
-                   // Locker.Text = "Please wait to turn the pump off.";
+                    //Locker.Text = "Please wait to turn the pump off.";
                     pumpDataSend = "1";
                     end = "off.";
                     SendGetRequest(pumpDataSend);
                     SendData();
                 }
+  
 
             }
+
+
         }
+
+  
     }
+
+    
 }
+

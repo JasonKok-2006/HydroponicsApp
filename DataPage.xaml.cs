@@ -2,6 +2,7 @@ using System;
 using System.Timers;
 using System.Diagnostics;
 using System.Text.Json;
+using Plugin.Maui.Audio;
 
 namespace NightShift;
 
@@ -45,10 +46,38 @@ public partial class DataPage : ContentPage
     public double FL1State = 0;
     public double FL2State = 0;
 
+    //audioplayer initaliser
+    private readonly IAudioManager audioManager;
 
-    public DataPage()
+    private System.Timers.Timer Data = new System.Timers.Timer(5000);
+
+    public DataPage(IAudioManager audioManager)
     {
         InitializeComponent();
+
+        this.audioManager = audioManager;
+
+
+        MakeGetRequest(DFL1, FL1State, DFL2, FL2State, DWL, DT, DH);
+        dataRefresh();
+    }
+
+    private async void clicker()
+    {
+        var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("mouse-click-153941.mp3"));
+        player.Play();
+    }
+
+    private void dataRefresh()
+    {
+        Data.Start();
+        Data.Enabled = true;
+        Data.Elapsed += reload;
+        Data.AutoReset = true;
+    }
+
+    private async void reload(object? sender, ElapsedEventArgs e)
+    {
         MakeGetRequest(DFL1, FL1State, DFL2, FL2State, DWL, DT, DH);
     }
 
@@ -178,6 +207,8 @@ public partial class DataPage : ContentPage
 
     private async void Backarrow_DataPage_Clicked(object sender, EventArgs e)
     {
+        clicker();
+
         DPBB.Color = Colors.LightGray;
         await Shell.Current.GoToAsync("..");
         DPBB.Color = Colors.White;

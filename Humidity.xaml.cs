@@ -10,6 +10,7 @@ using static NightShift.Humidity;
 //using static Android.Provider.Contacts.Intents;
 using Microsoft.Maui.Controls.Shapes;
 using System.Net;
+using Plugin.Maui.Audio;
 
 namespace NightShift;
 
@@ -19,8 +20,13 @@ public partial class Humidity : ContentPage
     public double humidity = 0;
     public double rotator = 0;
     public double rotatorReset = 0;
+    bool bgPlay = true;
 
-    private System.Timers.Timer hTimer = new System.Timers.Timer(2000);
+    private System.Timers.Timer hTimer = new System.Timers.Timer(20000);
+
+
+    //audioplayer initaliser
+    private readonly IAudioManager audioManager;
 
     public class Rootobject
     {
@@ -56,9 +62,14 @@ public partial class Humidity : ContentPage
         public string field5 { get; set; }
     }
 
-    public Humidity()
+    public Humidity(IAudioManager audioManager)
     {
         InitializeComponent();
+
+        this.audioManager = audioManager;
+        
+
+        bgPlay = true;
 
         MakeGetRequest(HumidityDisplay, humidity, rotator, rotatorReset, Pointer, Description, Growth1, Growth2);
 
@@ -73,10 +84,42 @@ public partial class Humidity : ContentPage
         HumidityDisplay.Text = "The Greenhouse Humidity is at " + humidity + "%.";
 
         HumTimer();
+        backgroundMusic();
+    }
+
+    //background music
+    private async void backgroundMusic()
+    {
+        var bgMusic = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("wandering-6394.wav"));
+        if (bgPlay == true)
+        {
+            bgMusic.Play();
+        }
+        else
+        {
+            bgMusic.Stop();
+            //bgMusic.Dispose();
+        }
+    }
+
+        //ready/refresh sound effect
+    private async void chime()
+    {
+        var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("chime-6346.mp3"));
+        player.Play();
+    }
+
+    //clicker sound effect
+    private async void clicker()
+    {
+        var player = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("mouse-click-153941.mp3"));
+        player.Play();
     }
 
     private async void HumDots_Clicked(object sender, EventArgs e)
     {
+        clicker();
+
         await HumDots.RelRotateTo(90);
         dotClickCount++;
 
@@ -223,14 +266,16 @@ public partial class Humidity : ContentPage
     }
     private void HumTimer()
     {
+        
         hTimer.Start();
         hTimer.Elapsed += hTimerEvent;
         hTimer.Enabled = true;
         hTimer.AutoReset = true;
     }
 
-    private void hTimerEvent(object? sender, ElapsedEventArgs e)
+    private async void hTimerEvent(object? sender, ElapsedEventArgs e)
     {
+        backgroundMusic();
         MakeGetRequest(HumidityDisplay, humidity, rotator, rotatorReset, Pointer, Description, Growth1, Growth2);
 
         //humidity = Convert.ToDouble(valueStore.Text);
@@ -255,10 +300,19 @@ public partial class Humidity : ContentPage
                 HumidityDisplay.Text = "The Greenhouse Humidity is at " + humidity + "%.";
             }
         });
+
+        chime();
+
+
     }
 
     private async void HumGear_Clicked(object sender, EventArgs e)
     {
+        clicker();
+
+        bgPlay = false;
+        backgroundMusic();
+
         HumgearBg.Color = Colors.LightGray;
         await Shell.Current.GoToAsync("Settings");
         HumgearBg.Color = Colors.White;
@@ -266,6 +320,11 @@ public partial class Humidity : ContentPage
 
     private async void HumGraph_Clicked(object sender, EventArgs e)
     {
+        clicker();
+
+        bgPlay = false;
+        backgroundMusic();
+
         HumgraphBg.Color = Colors.LightGray;
         await Shell.Current.GoToAsync("DataPage");
         HumgraphBg.Color = Colors.White;
@@ -273,12 +332,22 @@ public partial class Humidity : ContentPage
 
     private async void HumPump_Clicked(object sender, EventArgs e)
     {
+        clicker();
+
+        bgPlay = false;
+        backgroundMusic();
+
         hTimer.Stop();
         await Shell.Current.GoToAsync("..");
     }
 
     private async void HumTemperature_Clicked(object sender, EventArgs e)
     {
+        clicker();
+
+        bgPlay = false;
+        backgroundMusic();
+
         hTimer.Stop();
         await Shell.Current.GoToAsync("../Temperature");
 
@@ -291,6 +360,11 @@ public partial class Humidity : ContentPage
 
     private async void HumLevel_Clicked(object sender, EventArgs e)
     {
+        clicker();
+
+        bgPlay = false;
+        backgroundMusic();
+
         hTimer.Stop();
         await Shell.Current.GoToAsync("../WaterLevel");
     }

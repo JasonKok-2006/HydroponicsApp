@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NightShift.MainPage">
-
+    
     <ScrollView>
         <AbsoluteLayout BackgroundColor="White">
             
@@ -20,7 +20,7 @@
             <Label Text="The pump is currently turned off." TextColor="Black" FontSize="12" AbsoluteLayout.LayoutBounds="110, 580, 200, 20" x:Name="PumpLabel"/>
             <Label Text="You can turn the pump on." TextColor="Green" FontSize="12" AbsoluteLayout.LayoutBounds="90, 600, 220, 20" x:Name="Locker" HorizontalOptions="Center"/>
             <Label Text="Note: if the pump is turned on/off, there is a 15 second" TextColor="Red" FontSize="12" AbsoluteLayout.LayoutBounds="50, 680, 310, 20" HorizontalOptions="Center"/>
-            <Label Text="lock before any other action can be performed." TextColor="Red" FontSize="12" AbsoluteLayout.LayoutBounds="50, 700, 310, 20" HorizontalOptions="Center"/>
+            <Label Text="lock before the pump can be turned on/off." TextColor="Red" FontSize="12" AbsoluteLayout.LayoutBounds="50, 700, 310, 20" HorizontalOptions="Center"/>
             <Label Text="This includes the initial launch of the app." TextColor="Red" FontSize="12" AbsoluteLayout.LayoutBounds="50, 720, 310, 20" HorizontalOptions="Center"/>
 
             <!--This is the menu icon-->
