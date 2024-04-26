@@ -1,4 +1,6 @@
 using Plugin.Maui.Audio;
+using System.IO;
+using Microsoft.Maui.Controls;
 
 namespace NightShift;
 
@@ -32,14 +34,12 @@ public partial class Settings : ContentPage
         volumes = [Convert.ToDouble(BgVolume.Text), Convert.ToDouble(SFXVolume.Text)];
         await Shell.Current.GoToAsync("..");
         SBB.Color = Colors.White;
+        
     }
 
     public async void Credit_Clicked(object sender, EventArgs e)
     {
         clicker();
-
-        volumes = [Convert.ToDouble(BgVolume.Text), Convert.ToDouble(SFXVolume.Text)];
-        await Shell.Current.GoToAsync(nameof(Credits));
     }
 
     public void BackgroundSlider_ValueChanged(object sender, ValueChangedEventArgs e)
@@ -53,6 +53,13 @@ public partial class Settings : ContentPage
 
     }
 
+    private void Save_Clicked(object sender, EventArgs e)
+    {
+        clicker();
+        volumes = [Convert.ToDouble(BgVolume.Text), Convert.ToDouble(SFXVolume.Text)];
+        //Test1.Text = Convert.ToString(volumes[0]);
+        //Test2.Text = Convert.ToString(volumes[1]);
+    }
 }
 
 

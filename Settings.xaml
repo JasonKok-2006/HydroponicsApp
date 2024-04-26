@@ -25,8 +25,14 @@
         <ImageButton Source="backarrow.svg" AbsoluteLayout.LayoutBounds="25, 25, 30, 30" x:Name="Backarrow_Settings" Clicked="Backarrow_Settings_Clicked"/>
         <Border AbsoluteLayout.LayoutBounds="20, 20, 40, 40"/>
 
+        <Button Text="Save" TextColor="Black" FontFamily="Arial" FontSize="20" AbsoluteLayout.LayoutBounds="100, 520, 200, 50" BackgroundColor="White" BorderColor="Black" BorderWidth="1" x:Name="Save" Clicked="Save_Clicked" VerticalOptions="Center" HorizontalOptions="Center"/>
+
         <!--Credits Button-->
-        <Button AbsoluteLayout.LayoutBounds="155, 740, 100, 50" BackgroundColor="White" x:Name="Credit" TextColor="Black" Clicked="Credit_Clicked" VerticalOptions="Center" HorizontalOptions="Center"/>
+        <Button AbsoluteLayout.LayoutBounds="155, 740, 100, 50" BackgroundColor="White" FontSize="12" x:Name="Credit" TextColor="Black" Clicked="Credit_Clicked" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+        <!--Test Labels-->
+        <!--<Label Text="" x:Name="Test1" FontFamily="Arial" AbsoluteLayout.LayoutBounds="0, 0, 410, 60" FontSize="20" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center"/>
+        <Label Text="" x:Name="Test2" FontFamily="Arial" AbsoluteLayout.LayoutBounds="0, 0, 410, 60" FontSize="20" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center"/>-->
 
     </AbsoluteLayout>
 

@@ -22,7 +22,7 @@ public partial class WaterLevel : ContentPage
     double floatSwitch2 = 0;
     bool bgPlay = false;
 
-    private System.Timers.Timer lTimer = new System.Timers.Timer(20000);
+    private System.Timers.Timer lTimer = new System.Timers.Timer(1000);
 
     //audioplayer initaliser
     private readonly IAudioManager audioManager;
@@ -77,7 +77,7 @@ public partial class WaterLevel : ContentPage
                 Level.Source = "waterlevelmid.svg";
                 break;
             case "The water level is currently low.":
-                Level.Source = "waterlevelmlow.svg";
+                Level.Source = "waterlevellow.svg";
                 break;
         }
 
@@ -135,7 +135,7 @@ public partial class WaterLevel : ContentPage
                     Level.Source = "waterlevelmid.svg";
                     break;
                 case "The water level is currently low.":
-                    Level.Source = "waterlevelmlow.svg";
+                    Level.Source = "waterlevellow.svg";
                     break;
             }
         });

@@ -192,7 +192,7 @@ public partial class Humidity : ContentPage
                         await pic.RotateTo(resetValue);
 
                         //this will make the new rotator value and reset value
-                        rotatorValue = humidityValue;
+                        rotatorValue = (humidityValue / 100) * 180;
                         resetValue = 0 - rotatorValue;
 
                         //this will rotate the pointer
@@ -231,11 +231,31 @@ public partial class Humidity : ContentPage
                         await pic.RotateTo(resetValue);
 
                         //this will make the new rotator value and reset value
-                        rotatorValue = humidityValue;
+                        rotatorValue = (humidityValue / 100) * 180;
                         resetValue = 0 - rotatorValue;
 
                         //this will rotate the pointer
                         await pic.RotateTo(rotatorValue);
+
+                        //Description texts for according to the value
+                        if (humidityValue < 40)
+                        {
+                            Describe.Text = "Too Dry";
+                            Growth1.Text = "Possible Growth:";
+                            Growth2.Text = "Bacteria + Viruses";
+                        }
+                        else if (humidityValue > 60)
+                        {
+                            Describe.Text = "Too Humid";
+                            Growth1.Text = "Possible Growth:";
+                            Growth2.Text = "Fungi + Dust Mites";
+                        }
+                        else
+                        {
+                            Describe.Text = "";
+                            Growth1.Text = "Optimal Level";
+                            Growth2.Text = "";
+                        }
                     }
 
                     //if (Convert.ToString(deserialisedContent.feeds[last - 1].field2) == null)
