@@ -3,27 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NightShift.Credits"
 Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <AbsoluteLayout BackgroundColor="White">
 
-    <AbsoluteLayout BackgroundColor="White">
+            <!--Logo Branding-->
+            <Image Source="logo.svg" AbsoluteLayout.LayoutBounds="230, 22, 160, 40"/>
 
-        <!--Logo Branding-->
-        <Image Source="logo.svg" AbsoluteLayout.LayoutBounds="230, 22, 160, 40"/>
+            <BoxView AbsoluteLayout.LayoutBounds="20, 20, 40, 40" x:Name="CBB" Color="White"/>
+            <ImageButton Source="backarrow.svg" AbsoluteLayout.LayoutBounds="25, 25, 30, 30" x:Name="Backarrow_Credits" Clicked="Backarrow_Credits_Clicked"/>
+            <Border AbsoluteLayout.LayoutBounds="20, 20, 40, 40"/>
 
-        <BoxView AbsoluteLayout.LayoutBounds="20, 20, 40, 40" x:Name="CBB" Color="White"/>
-        <ImageButton Source="backarrow.svg" AbsoluteLayout.LayoutBounds="25, 25, 30, 30" x:Name="Backarrow_Credits" Clicked="Backarrow_Credits_Clicked"/>
-        <Border AbsoluteLayout.LayoutBounds="20, 20, 40, 40"/>
+            <Label AbsoluteLayout.LayoutBounds="50, 60, 310, 55" Text="Credits" TextColor="Black" FontSize="48" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label AbsoluteLayout.LayoutBounds="50, 150, 310, 30" Text="App Designer:" TextColor="Black" FontSize="24" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label AbsoluteLayout.LayoutBounds="50, 180, 310, 30" Text="Jason Kok" TextColor="Black" FontSize="24" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label AbsoluteLayout.LayoutBounds="50, 300, 310, 30" Text="App Programmer:" TextColor="Black" FontSize="24" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label AbsoluteLayout.LayoutBounds="50, 330, 310, 30" Text="Jason Kok" TextColor="Black" FontSize="24" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label AbsoluteLayout.LayoutBounds="50, 450, 310, 30" Text="Model Designer:" TextColor="Black" FontSize="24" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label AbsoluteLayout.LayoutBounds="50, 480, 310, 30" Text="Jason Kok" TextColor="Black" FontSize="24" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label AbsoluteLayout.LayoutBounds="50, 600, 310, 30" Text="MAUI Taught By:" TextColor="Black" FontSize="24" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label AbsoluteLayout.LayoutBounds="50, 630, 310, 30" Text="Jason Kok (Self Taught)" TextColor="Black" FontSize="24" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label AbsoluteLayout.LayoutBounds="50, 700, 310, 30" Text="You can do anything if you put your mind to it." TextColor="Black" FontSize="15" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label AbsoluteLayout.LayoutBounds="50, 715, 310, 30" Text="(Once you get past the failures and self-doubt)" TextColor="Black" FontSize="15" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
 
-        <Label AbsoluteLayout.LayoutBounds="50, 60, 310, 55" Text="Credits" TextColor="Black" FontSize="48" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <Label AbsoluteLayout.LayoutBounds="50, 150, 310, 30" Text="App Designer:" TextColor="Black" FontSize="24" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <Label AbsoluteLayout.LayoutBounds="50, 180, 310, 30" Text="Jason Kok" TextColor="Black" FontSize="24" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <Label AbsoluteLayout.LayoutBounds="50, 300, 310, 30" Text="App Programmer:" TextColor="Black" FontSize="24" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <Label AbsoluteLayout.LayoutBounds="50, 330, 310, 30" Text="Jason Kok" TextColor="Black" FontSize="24" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <Label AbsoluteLayout.LayoutBounds="50, 450, 310, 30" Text="Model Designer:" TextColor="Black" FontSize="24" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <Label AbsoluteLayout.LayoutBounds="50, 480, 310, 30" Text="Jason Kok" TextColor="Black" FontSize="24" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <Label AbsoluteLayout.LayoutBounds="50, 600, 310, 30" Text="MAUI Taught By:" TextColor="Black" FontSize="24" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <Label AbsoluteLayout.LayoutBounds="50, 630, 310, 30" Text="Jason Kok (Self Taught)" TextColor="Black" FontSize="24" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <Label AbsoluteLayout.LayoutBounds="50, 700, 310, 30" Text="You can do anything if you put your mind to it." TextColor="Black" FontSize="15" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <Label AbsoluteLayout.LayoutBounds="50, 715, 310, 30" Text="(Once you get past the failures and self-doubt)" TextColor="Black" FontSize="15" FontFamily="Arial" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </AbsoluteLayout>
+    </ScrollView>
 
-    </AbsoluteLayout>
 </ContentPage>

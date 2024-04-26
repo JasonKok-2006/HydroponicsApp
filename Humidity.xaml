@@ -4,76 +4,79 @@
              x:Class="NightShift.Humidity"
              Shell.NavBarIsVisible="False">
 
-    <AbsoluteLayout BackgroundColor="White">
+    <ScrollView>
+        <AbsoluteLayout BackgroundColor="White">
 
-        <!--Logo Branding-->
-        <Image Source="logo.svg" AbsoluteLayout.LayoutBounds="230, 22, 160, 40"/>
+            <!--Logo Branding-->
+            <Image Source="logo.svg" AbsoluteLayout.LayoutBounds="230, 22, 160, 40"/>
 
-        <!--This is the menu icon-->
-        <BoxView AbsoluteLayout.LayoutBounds="20, 20, 40, 40" Color="White" x:Name="HumdotsBg"/>
-        <ImageButton Source="threedotx.svg" AbsoluteLayout.LayoutBounds="25, 25, 30, 30" Rotation="90" x:Name="HumDots" Clicked="HumDots_Clicked"/>
-        <Border AbsoluteLayout.LayoutBounds="20, 20, 40, 40"/>
-
-
-        <!--This is the settings icon-->
-        <BoxView AbsoluteLayout.LayoutBounds="20, 75, 40, 40" Color="White" x:Name="HumgearBg"/>
-        <ImageButton Source="gear.svg" AbsoluteLayout.LayoutBounds="25, 80, 30, 30" x:Name="HumGear" Clicked="HumGear_Clicked" IsVisible="False" IsEnabled="False"/>
-        <Border AbsoluteLayout.LayoutBounds="20, 75, 40, 40" x:Name="HumBorder1" IsVisible="False"/>
-
-        <!--This is the graph icon-->
-        <BoxView AbsoluteLayout.LayoutBounds="20, 130, 40, 40" Color="White" x:Name="HumgraphBg"/>
-        <ImageButton Source="graph.svg" AbsoluteLayout.LayoutBounds="25, 135, 30, 30" x:Name="HumGraph" Clicked="HumGraph_Clicked" IsVisible="False" IsEnabled="False"/>
-        <Border AbsoluteLayout.LayoutBounds="20, 130, 40, 40" x:Name="HumBorder2" IsVisible="False"/>
-
-        <!--This is the footer-->
-        <!--Boxes-->
-        <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="0, 770, 102, 70"/>
-        <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="103, 770, 102, 70"/>
-        <BoxView BackgroundColor="LightGray" AbsoluteLayout.LayoutBounds="206, 770, 102, 70"/>
-        <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="309, 770, 102, 70"/>
-
-        <!--ImageButtons-->
-        <ImageButton Source="powerpagenull.svg" AbsoluteLayout.LayoutBounds="6, 780, 90, 40" x:Name="HumPump" Clicked="HumPump_Clicked"/>
-        <ImageButton Source="temperaturepagenull.svg"  AbsoluteLayout.LayoutBounds="109, 780, 90, 40" x:Name="HumTemperature" Clicked="HumTemperature_Clicked"/>
-        <ImageButton Source="humiditypage.svg" AbsoluteLayout.LayoutBounds="212, 780, 90, 40" x:Name="HumHumidity" Clicked="HumHumidity_Clicked"/>
-        <ImageButton Source="levelpagenull.svg" AbsoluteLayout.LayoutBounds="315, 780, 90, 40" x:Name="HumLevel" Clicked="HumLevel_Clicked"/>
-
-        <!--Borders-->
-        <Border AbsoluteLayout.LayoutBounds="0, 770, 411, 70"/>
-
-        <!--Text Labels-->
-        <Label Text="Pump" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="0, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
-        <Label Text="Temperature" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="103, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
-        <Label Text="Humidity" FontSize="12" FontFamily="Arial" TextColor="White" AbsoluteLayout.LayoutBounds="206, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
-        <Label Text="Water Level" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="309, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <!--This is the menu icon-->
+            <BoxView AbsoluteLayout.LayoutBounds="20, 20, 40, 40" Color="White" x:Name="HumdotsBg"/>
+            <ImageButton Source="threedotx.svg" AbsoluteLayout.LayoutBounds="25, 25, 30, 30" Rotation="90" x:Name="HumDots" Clicked="HumDots_Clicked"/>
+            <Border AbsoluteLayout.LayoutBounds="20, 20, 40, 40"/>
 
 
-        <!--The actual page functions-->
-        <Image Source="humiditygauge.svg" AbsoluteLayout.LayoutBounds="25, 250, 360, 240"/>
-        <Image Source="humiditypointer.svg" AbsoluteLayout.LayoutBounds="120, 430, 170, 30"  x:Name="Pointer"/>
-        
-        <!--Header-->
-        <BoxView AbsoluteLayout.LayoutBounds="105, 180, 200, 50" BackgroundColor="AliceBlue"/>
-        <Label AbsoluteLayout.LayoutBounds="105, 180, 200, 50" Text="Humidity" FontSize="24" FontFamily="Arial" TextColor="Blue" VerticalOptions="Center" HorizontalOptions="Center"/>
-        <Border AbsoluteLayout.LayoutBounds="105, 180, 200, 50"/>
-        
-        <!--Value Display-->
-        <BoxView AbsoluteLayout.LayoutBounds="25, 480, 360, 50" BackgroundColor="AliceBlue"/>
-        <Label AbsoluteLayout.LayoutBounds="30, 480, 350, 50" Text="Humidity" FontSize="18" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="HumidityDisplay"/>
-        <Border AbsoluteLayout.LayoutBounds="25, 480, 360, 50"/>
+            <!--This is the settings icon-->
+            <BoxView AbsoluteLayout.LayoutBounds="20, 75, 40, 40" Color="White" x:Name="HumgearBg"/>
+            <ImageButton Source="gear.svg" AbsoluteLayout.LayoutBounds="25, 80, 30, 30" x:Name="HumGear" Clicked="HumGear_Clicked" IsVisible="False" IsEnabled="False"/>
+            <Border AbsoluteLayout.LayoutBounds="20, 75, 40, 40" x:Name="HumBorder1" IsVisible="False"/>
 
-        <BoxView AbsoluteLayout.LayoutBounds="25, 550, 170, 200" BackgroundColor="AliceBlue"/>
-        <Border AbsoluteLayout.LayoutBounds="25, 550, 170, 200"/>
-        <Label AbsoluteLayout.LayoutBounds="25, 615, 170, 30" Text="Optimal" FontSize="18" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-        <Label AbsoluteLayout.LayoutBounds="25, 640, 170, 30" Text="Humidity:" FontSize="18" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-        <Label AbsoluteLayout.LayoutBounds="25, 665, 170, 30" Text="40-60%" FontSize="18" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+            <!--This is the graph icon-->
+            <BoxView AbsoluteLayout.LayoutBounds="20, 130, 40, 40" Color="White" x:Name="HumgraphBg"/>
+            <ImageButton Source="graph.svg" AbsoluteLayout.LayoutBounds="25, 135, 30, 30" x:Name="HumGraph" Clicked="HumGraph_Clicked" IsVisible="False" IsEnabled="False"/>
+            <Border AbsoluteLayout.LayoutBounds="20, 130, 40, 40" x:Name="HumBorder2" IsVisible="False"/>
 
-        <BoxView AbsoluteLayout.LayoutBounds="214, 550, 170, 200" BackgroundColor="AliceBlue"/>
-        <Border AbsoluteLayout.LayoutBounds="214, 550, 170, 200"/>
-        <Label AbsoluteLayout.LayoutBounds="214, 615, 170, 30" Text="" FontSize="18" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="Description"/>
-        <Label AbsoluteLayout.LayoutBounds="214, 640, 170, 30" Text="Optimal Level" FontSize="18" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="Growth1"/>
-        <Label AbsoluteLayout.LayoutBounds="214, 665, 170, 30" Text="" FontSize="18" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="Growth2"/>
+            <!--This is the footer-->
+            <!--Boxes-->
+            <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="0, 770, 102, 70"/>
+            <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="103, 770, 102, 70"/>
+            <BoxView BackgroundColor="LightGray" AbsoluteLayout.LayoutBounds="206, 770, 102, 70"/>
+            <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="309, 770, 102, 70"/>
+
+            <!--ImageButtons-->
+            <ImageButton Source="powerpagenull.svg" AbsoluteLayout.LayoutBounds="6, 780, 90, 40" x:Name="HumPump" Clicked="HumPump_Clicked"/>
+            <ImageButton Source="temperaturepagenull.svg"  AbsoluteLayout.LayoutBounds="109, 780, 90, 40" x:Name="HumTemperature" Clicked="HumTemperature_Clicked"/>
+            <ImageButton Source="humiditypage.svg" AbsoluteLayout.LayoutBounds="212, 780, 90, 40" x:Name="HumHumidity" Clicked="HumHumidity_Clicked"/>
+            <ImageButton Source="levelpagenull.svg" AbsoluteLayout.LayoutBounds="315, 780, 90, 40" x:Name="HumLevel" Clicked="HumLevel_Clicked"/>
+
+            <!--Borders-->
+            <Border AbsoluteLayout.LayoutBounds="0, 770, 411, 70"/>
+
+            <!--Text Labels-->
+            <Label Text="Pump" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="0, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Text="Temperature" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="103, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Text="Humidity" FontSize="12" FontFamily="Arial" TextColor="White" AbsoluteLayout.LayoutBounds="206, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Text="Water Level" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="309, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
 
 
-    </AbsoluteLayout>
+            <!--The actual page functions-->
+            <Image Source="humiditygauge.svg" AbsoluteLayout.LayoutBounds="25, 250, 360, 240"/>
+            <Image Source="humiditypointer.svg" AbsoluteLayout.LayoutBounds="120, 430, 170, 30"  x:Name="Pointer"/>
+
+            <!--Header-->
+            <BoxView AbsoluteLayout.LayoutBounds="105, 180, 200, 50" BackgroundColor="AliceBlue"/>
+            <Label AbsoluteLayout.LayoutBounds="105, 180, 200, 50" Text="Humidity" FontSize="24" FontFamily="Arial" TextColor="Blue" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Border AbsoluteLayout.LayoutBounds="105, 180, 200, 50"/>
+
+            <!--Value Display-->
+            <BoxView AbsoluteLayout.LayoutBounds="25, 480, 360, 50" BackgroundColor="AliceBlue"/>
+            <Label AbsoluteLayout.LayoutBounds="30, 480, 350, 50" Text="Humidity" FontSize="18" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="HumidityDisplay"/>
+            <Border AbsoluteLayout.LayoutBounds="25, 480, 360, 50"/>
+
+            <BoxView AbsoluteLayout.LayoutBounds="25, 550, 170, 200" BackgroundColor="AliceBlue"/>
+            <Border AbsoluteLayout.LayoutBounds="25, 550, 170, 200"/>
+            <Label AbsoluteLayout.LayoutBounds="25, 615, 170, 30" Text="Optimal" FontSize="18" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+            <Label AbsoluteLayout.LayoutBounds="25, 640, 170, 30" Text="Humidity:" FontSize="18" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+            <Label AbsoluteLayout.LayoutBounds="25, 665, 170, 30" Text="40-60%" FontSize="18" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+
+            <BoxView AbsoluteLayout.LayoutBounds="214, 550, 170, 200" BackgroundColor="AliceBlue"/>
+            <Border AbsoluteLayout.LayoutBounds="214, 550, 170, 200"/>
+            <Label AbsoluteLayout.LayoutBounds="214, 615, 170, 30" Text="" FontSize="18" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="Description"/>
+            <Label AbsoluteLayout.LayoutBounds="214, 640, 170, 30" Text="Optimal Level" FontSize="18" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="Growth1"/>
+            <Label AbsoluteLayout.LayoutBounds="214, 665, 170, 30" Text="" FontSize="18" FontFamily="Arial" TextColor="Blue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="Growth2"/>
+
+
+        </AbsoluteLayout>
+    </ScrollView>
+   
 </ContentPage>

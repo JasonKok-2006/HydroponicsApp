@@ -4,35 +4,37 @@
              x:Class="NightShift.DataPage"
              Shell.NavBarIsVisible="False">
 
+    <ScrollView>
+        <AbsoluteLayout BackgroundColor="White">
 
-    <AbsoluteLayout BackgroundColor="White">
+            <!--Logo Branding-->
+            <Image Source="logo.svg" AbsoluteLayout.LayoutBounds="230, 22, 160, 40"/>
 
-        <!--Logo Branding-->
-        <Image Source="logo.svg" AbsoluteLayout.LayoutBounds="230, 22, 160, 40"/>
+            <!--Setting page header text-->
+            <Label Text="DataPage" FontFamily="Arial" AbsoluteLayout.LayoutBounds="105, 90, 200, 60" FontSize="30" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center"/>
+            <Label Text="All Data - One Place" FontFamily="Arial" AbsoluteLayout.LayoutBounds="105, 120, 200, 60" FontSize="18" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center"/>
 
-        <!--Setting page header text-->
-        <Label Text="DataPage" FontFamily="Arial" AbsoluteLayout.LayoutBounds="105, 90, 200, 60" FontSize="30" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center"/>
-        <Label Text="All Data - One Place" FontFamily="Arial" AbsoluteLayout.LayoutBounds="105, 120, 200, 60" FontSize="18" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center"/>
-        
-        <!--The Data Fields-->
-        <Label Text="Float Switch 1" FontFamily="Arial" AbsoluteLayout.LayoutBounds="5, 230, 200, 60" FontSize="24" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center"/>
-        <Label Text="Float Switch 2" FontFamily="Arial" AbsoluteLayout.LayoutBounds="205, 230, 200, 60" FontSize="24" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center"/>
-        <Label Text="Water Level" FontFamily="Arial" AbsoluteLayout.LayoutBounds="105, 370, 200, 60" FontSize="24" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center"/>
-        <Label Text="Temperature" FontFamily="Arial" AbsoluteLayout.LayoutBounds="105, 510, 200, 60" FontSize="24" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center"/>
-        <Label Text="Humidity" FontFamily="Arial" AbsoluteLayout.LayoutBounds="105, 650, 200, 60" FontSize="24" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center"/>
+            <!--The Data Fields-->
+            <Label Text="Float Switch 1" FontFamily="Arial" AbsoluteLayout.LayoutBounds="5, 230, 200, 60" FontSize="24" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center"/>
+            <Label Text="Float Switch 2" FontFamily="Arial" AbsoluteLayout.LayoutBounds="205, 230, 200, 60" FontSize="24" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center"/>
+            <Label Text="Water Level" FontFamily="Arial" AbsoluteLayout.LayoutBounds="105, 370, 200, 60" FontSize="24" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center"/>
+            <Label Text="Temperature" FontFamily="Arial" AbsoluteLayout.LayoutBounds="105, 510, 200, 60" FontSize="24" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center"/>
+            <Label Text="Humidity" FontFamily="Arial" AbsoluteLayout.LayoutBounds="105, 650, 200, 60" FontSize="24" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center"/>
 
 
-        <!--The Actual Data-->
-        <Label Text="Float Switch 1" FontFamily="Arial" AbsoluteLayout.LayoutBounds="5, 270, 200, 60" FontSize="18" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center" x:Name="DFL1"/>
-        <Label Text="Float Switch 2" FontFamily="Arial" AbsoluteLayout.LayoutBounds="205, 270, 200, 60" FontSize="18" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center" x:Name="DFL2"/>
-        <Label Text="Water Level" FontFamily="Arial" AbsoluteLayout.LayoutBounds="105, 410, 200, 60" FontSize="18" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center" x:Name="DWL"/>
-        <Label Text="Temperature" FontFamily="Arial" AbsoluteLayout.LayoutBounds="105, 550, 200, 60" FontSize="18" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center" x:Name="DT"/>
-        <Label Text="Humidity" FontFamily="Arial" AbsoluteLayout.LayoutBounds="105, 690, 200, 60" FontSize="18" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center" x:Name="DH"/>
+            <!--The Actual Data-->
+            <Label Text="Float Switch 1" FontFamily="Arial" AbsoluteLayout.LayoutBounds="5, 270, 200, 60" FontSize="18" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center" x:Name="DFL1"/>
+            <Label Text="Float Switch 2" FontFamily="Arial" AbsoluteLayout.LayoutBounds="205, 270, 200, 60" FontSize="18" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center" x:Name="DFL2"/>
+            <Label Text="Water Level" FontFamily="Arial" AbsoluteLayout.LayoutBounds="105, 410, 200, 60" FontSize="18" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center" x:Name="DWL"/>
+            <Label Text="Temperature" FontFamily="Arial" AbsoluteLayout.LayoutBounds="105, 550, 200, 60" FontSize="18" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center" x:Name="DT"/>
+            <Label Text="Humidity" FontFamily="Arial" AbsoluteLayout.LayoutBounds="105, 690, 200, 60" FontSize="18" TextColor="Black" VerticalOptions="Center"  HorizontalOptions="Center" x:Name="DH"/>
+
+            <!--back button-->
+            <BoxView AbsoluteLayout.LayoutBounds="20, 20, 40, 40" x:Name="DPBB" Color="White"/>
+            <ImageButton Source="backarrow.svg" AbsoluteLayout.LayoutBounds="25, 25, 30, 30" x:Name="Backarrow_DataPage" Clicked="Backarrow_DataPage_Clicked"/>
+            <Border AbsoluteLayout.LayoutBounds="20, 20, 40, 40"/>
+
+        </AbsoluteLayout>
+    </ScrollView>
     
-        <!--back button-->
-        <BoxView AbsoluteLayout.LayoutBounds="20, 20, 40, 40" x:Name="DPBB" Color="White"/>
-        <ImageButton Source="backarrow.svg" AbsoluteLayout.LayoutBounds="25, 25, 30, 30" x:Name="Backarrow_DataPage" Clicked="Backarrow_DataPage_Clicked"/>
-        <Border AbsoluteLayout.LayoutBounds="20, 20, 40, 40"/>
-
-    </AbsoluteLayout>
 </ContentPage>

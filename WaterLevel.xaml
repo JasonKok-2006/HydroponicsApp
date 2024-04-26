@@ -4,57 +4,60 @@
              x:Class="NightShift.WaterLevel"
              Shell.NavBarIsVisible="False">
 
-    <AbsoluteLayout BackgroundColor="White">
+    <ScrollView>
+        <AbsoluteLayout BackgroundColor="White">
 
-        <!--Logo Branding-->
-        <Image Source="logo.svg" AbsoluteLayout.LayoutBounds="230, 22, 160, 40"/>
+            <!--Logo Branding-->
+            <Image Source="logo.svg" AbsoluteLayout.LayoutBounds="230, 22, 160, 40"/>
 
-        <!--This is the menu icon-->
-        <BoxView AbsoluteLayout.LayoutBounds="20, 20, 40, 40" Color="White" x:Name="LvldotsBg"/>
-        <ImageButton Source="threedotx.svg" AbsoluteLayout.LayoutBounds="25, 25, 30, 30" Rotation="90" x:Name="LvlDots" Clicked="LvlDots_Clicked"/>
-        <Border AbsoluteLayout.LayoutBounds="20, 20, 40, 40"/>
+            <!--This is the menu icon-->
+            <BoxView AbsoluteLayout.LayoutBounds="20, 20, 40, 40" Color="White" x:Name="LvldotsBg"/>
+            <ImageButton Source="threedotx.svg" AbsoluteLayout.LayoutBounds="25, 25, 30, 30" Rotation="90" x:Name="LvlDots" Clicked="LvlDots_Clicked"/>
+            <Border AbsoluteLayout.LayoutBounds="20, 20, 40, 40"/>
 
 
-        <!--This is the settings icon-->
-        <BoxView AbsoluteLayout.LayoutBounds="20, 75, 40, 40" Color="White" x:Name="LvlgearBg"/>
-        <ImageButton Source="gear.svg" AbsoluteLayout.LayoutBounds="25, 80, 30, 30" x:Name="LvlGear" Clicked="LvlGear_Clicked" IsVisible="False" IsEnabled="False"/>
-        <Border AbsoluteLayout.LayoutBounds="20, 75, 40, 40" x:Name="LvlBorder1" IsVisible="False"/>
+            <!--This is the settings icon-->
+            <BoxView AbsoluteLayout.LayoutBounds="20, 75, 40, 40" Color="White" x:Name="LvlgearBg"/>
+            <ImageButton Source="gear.svg" AbsoluteLayout.LayoutBounds="25, 80, 30, 30" x:Name="LvlGear" Clicked="LvlGear_Clicked" IsVisible="False" IsEnabled="False"/>
+            <Border AbsoluteLayout.LayoutBounds="20, 75, 40, 40" x:Name="LvlBorder1" IsVisible="False"/>
 
-        <!--This is the graph icon-->
-        <BoxView AbsoluteLayout.LayoutBounds="20, 130, 40, 40" Color="White" x:Name="LvlgraphBg"/>
-        <ImageButton Source="graph.svg" AbsoluteLayout.LayoutBounds="25, 135, 30, 30" x:Name="LvlGraph" Clicked="LvlGraph_Clicked" IsVisible="False" IsEnabled="False"/>
-        <Border AbsoluteLayout.LayoutBounds="20, 130, 40, 40" x:Name="LvlBorder2" IsVisible="False"/>
+            <!--This is the graph icon-->
+            <BoxView AbsoluteLayout.LayoutBounds="20, 130, 40, 40" Color="White" x:Name="LvlgraphBg"/>
+            <ImageButton Source="graph.svg" AbsoluteLayout.LayoutBounds="25, 135, 30, 30" x:Name="LvlGraph" Clicked="LvlGraph_Clicked" IsVisible="False" IsEnabled="False"/>
+            <Border AbsoluteLayout.LayoutBounds="20, 130, 40, 40" x:Name="LvlBorder2" IsVisible="False"/>
 
-        <!--This is the footer-->
-        <!--Boxes-->
-        <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="0, 770, 102, 70"/>
-        <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="103, 770, 102, 70"/>
-        <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="206, 770, 102, 70"/>
-        <BoxView BackgroundColor="LightGray" AbsoluteLayout.LayoutBounds="309, 770, 102, 70"/>
+            <!--This is the footer-->
+            <!--Boxes-->
+            <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="0, 770, 102, 70"/>
+            <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="103, 770, 102, 70"/>
+            <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="206, 770, 102, 70"/>
+            <BoxView BackgroundColor="LightGray" AbsoluteLayout.LayoutBounds="309, 770, 102, 70"/>
 
-        <!--ImageButtons-->
-        <ImageButton Source="powerpagenull.svg" AbsoluteLayout.LayoutBounds="6, 780, 90, 40" x:Name="LvlPump" Clicked="LvlPump_Clicked"/>
-        <ImageButton Source="temperaturepagenull.svg"  AbsoluteLayout.LayoutBounds="109, 780, 90, 40" x:Name="LvlTemperature" Clicked="LvlTemperature_Clicked"/>
-        <ImageButton Source="humiditypagenull.svg" AbsoluteLayout.LayoutBounds="212, 780, 90, 40" x:Name="LvlHumidity" Clicked="LvlHumidity_Clicked"/>
-        <ImageButton Source="levelpage.svg" AbsoluteLayout.LayoutBounds="315, 780, 90, 40" x:Name="LvlLevel" Clicked="LvlLevel_Clicked"/>
+            <!--ImageButtons-->
+            <ImageButton Source="powerpagenull.svg" AbsoluteLayout.LayoutBounds="6, 780, 90, 40" x:Name="LvlPump" Clicked="LvlPump_Clicked"/>
+            <ImageButton Source="temperaturepagenull.svg"  AbsoluteLayout.LayoutBounds="109, 780, 90, 40" x:Name="LvlTemperature" Clicked="LvlTemperature_Clicked"/>
+            <ImageButton Source="humiditypagenull.svg" AbsoluteLayout.LayoutBounds="212, 780, 90, 40" x:Name="LvlHumidity" Clicked="LvlHumidity_Clicked"/>
+            <ImageButton Source="levelpage.svg" AbsoluteLayout.LayoutBounds="315, 780, 90, 40" x:Name="LvlLevel" Clicked="LvlLevel_Clicked"/>
 
-        <!--Borders-->
-        <Border AbsoluteLayout.LayoutBounds="0, 770, 411, 70"/>
+            <!--Borders-->
+            <Border AbsoluteLayout.LayoutBounds="0, 770, 411, 70"/>
 
-        <!--Text Labels-->
-        <Label Text="Pump" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="0, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
-        <Label Text="Temperature" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="103, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
-        <Label Text="Humidity" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="206, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
-        <Label Text="Water Level" FontSize="12" FontFamily="Arial" TextColor="White" AbsoluteLayout.LayoutBounds="309, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
-        
-        <!--Page exclusive Content-->
-        <BoxView Color="LightGray"  AbsoluteLayout.LayoutBounds="105, 200, 200, 50"/>
-        <Label Text="Water Level" TextColor="Black" AbsoluteLayout.LayoutBounds="105, 200, 200, 50" FontSize="24" FontFamily="Arial" VerticalOptions="Center" HorizontalOptions="Center" />
-        <Border AbsoluteLayout.LayoutBounds="105, 200, 200, 50"/>
+            <!--Text Labels-->
+            <Label Text="Pump" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="0, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Text="Temperature" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="103, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Text="Humidity" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="206, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Text="Water Level" FontSize="12" FontFamily="Arial" TextColor="White" AbsoluteLayout.LayoutBounds="309, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
 
-        <!--visuals-->
-        <Image AbsoluteLayout.LayoutBounds="20, 300, 300, 300" x:Name="Level" Source="waterlevelhigh.svg"/>
-        <Label Text="The water level is currently high." TextColor="Black" FontSize="18" AbsoluteLayout.LayoutBounds="55, 620, 300, 30" x:Name="LevelLabel" HorizontalOptions="Center" VerticalOptions="Center"/>
-    </AbsoluteLayout>
+            <!--Page exclusive Content-->
+            <BoxView Color="LightGray"  AbsoluteLayout.LayoutBounds="105, 200, 200, 50"/>
+            <Label Text="Water Level" TextColor="Black" AbsoluteLayout.LayoutBounds="105, 200, 200, 50" FontSize="24" FontFamily="Arial" VerticalOptions="Center" HorizontalOptions="Center" />
+            <Border AbsoluteLayout.LayoutBounds="105, 200, 200, 50"/>
+
+            <!--visuals-->
+            <Image AbsoluteLayout.LayoutBounds="20, 300, 300, 300" x:Name="Level" Source="waterlevelhigh.svg"/>
+            <Label Text="The water level is currently high." TextColor="Black" FontSize="18" AbsoluteLayout.LayoutBounds="55, 620, 300, 30" x:Name="LevelLabel" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </AbsoluteLayout>
+    </ScrollView>
+   
 
 </ContentPage>

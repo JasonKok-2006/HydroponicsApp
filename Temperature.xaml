@@ -4,81 +4,83 @@
              x:Class="NightShift.Temperature"
              Shell.NavBarIsVisible="False">
 
+    <ScrollView>
+        <AbsoluteLayout BackgroundColor="White">
 
-    <AbsoluteLayout BackgroundColor="White">
-
-        <!--Logo Branding-->
-        <Image Source="logo.svg" AbsoluteLayout.LayoutBounds="230, 22, 160, 40"/>
-        
-
-        <!--Thermometer-->
-        <Ellipse AbsoluteLayout.LayoutBounds="20, 600, 100, 100" Fill="White" Stroke="Black" StrokeThickness="2"/>
-        <Ellipse AbsoluteLayout.LayoutBounds="45, 203, 50, 50" Fill="White" Stroke="Black" StrokeThickness="2"/>
-        <Border AbsoluteLayout.LayoutBounds="45, 228, 50, 377"/>
-        <BoxView AbsoluteLayout.LayoutBounds="47, 227, 46, 380" Color="White"/>
-
-        <BoxView AbsoluteLayout.LayoutBounds="58, 225, 24, 385" Color="white" x:Name="BlankSpace"/>
-        <Ellipse AbsoluteLayout.LayoutBounds="40, 620, 60, 60" Fill="Red" x:Name="base"/>
-        <BoxView AbsoluteLayout.LayoutBounds="58, 610, 24, 15" Color="Red" x:Name="RedBar"/>
-        <Ellipse AbsoluteLayout.LayoutBounds="58, 200, 24, 24" Fill="red" x:Name="tip"/>
-
-        <!--General displays-->
-        <BoxView AbsoluteLayout.LayoutBounds="105, 100, 200, 50" Color="LightPink"/>
-        <Label Text="Temperature" AbsoluteLayout.LayoutBounds="105, 100, 200, 50" TextColor="Maroon" FontSize="24" FontFamily="Arial" VerticalOptions="Center" HorizontalOptions="Center"/>
-        <Border AbsoluteLayout.LayoutBounds="105, 100, 200, 50"/>
-
-        <BoxView AbsoluteLayout.LayoutBounds="160, 220, 230, 100" Color="LightPink"/>
-        <Border AbsoluteLayout.LayoutBounds="160, 220, 230, 100"/>
-        <Label AbsoluteLayout.LayoutBounds="165, 220, 220, 100" x:Name="CurrentTemp" Text="Current Temperature is" TextColor="Maroon" FontSize="20" FontFamily="Arial" VerticalOptions="Center" HorizontalOptions="Center"/>
-
-        <BoxView AbsoluteLayout.LayoutBounds="160, 360, 230, 100" Color="LightPink"/>
-        <Border AbsoluteLayout.LayoutBounds="160, 360, 230, 100"/>
-        <Label AbsoluteLayout.LayoutBounds="165, 350, 220, 100" Text="Optimal Temperatures:" TextColor="Maroon" FontSize="20" FontFamily="Arial" VerticalOptions="Center" HorizontalOptions="Center"/>
-        <Label AbsoluteLayout.LayoutBounds="165, 370, 220, 100" Text="24-29°C" TextColor="Maroon" FontSize="20" FontFamily="Arial" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <!--Logo Branding-->
+            <Image Source="logo.svg" AbsoluteLayout.LayoutBounds="230, 22, 160, 40"/>
 
 
-        <BoxView AbsoluteLayout.LayoutBounds="160, 500, 230, 200" Color="LightPink"/>
-        <Border AbsoluteLayout.LayoutBounds="160, 500, 230, 200"/>
-        <Label AbsoluteLayout.LayoutBounds="165, 505, 220, 190" Text="The temperature is at an optimal level." TextColor="Maroon" FontSize="20" FontFamily="Arial" VerticalOptions="Center" HorizontalOptions="Center" x:Name="Description"/>
+            <!--Thermometer-->
+            <Ellipse AbsoluteLayout.LayoutBounds="20, 600, 100, 100" Fill="White" Stroke="Black" StrokeThickness="2"/>
+            <Ellipse AbsoluteLayout.LayoutBounds="45, 203, 50, 50" Fill="White" Stroke="Black" StrokeThickness="2"/>
+            <Border AbsoluteLayout.LayoutBounds="45, 228, 50, 377"/>
+            <BoxView AbsoluteLayout.LayoutBounds="47, 227, 46, 380" Color="White"/>
+
+            <BoxView AbsoluteLayout.LayoutBounds="58, 225, 24, 385" Color="white" x:Name="BlankSpace"/>
+            <Ellipse AbsoluteLayout.LayoutBounds="40, 620, 60, 60" Fill="Red" x:Name="base"/>
+            <BoxView AbsoluteLayout.LayoutBounds="58, 610, 24, 15" Color="Red" x:Name="RedBar"/>
+            <Ellipse AbsoluteLayout.LayoutBounds="58, 200, 24, 24" Fill="red" x:Name="tip"/>
+
+            <!--General displays-->
+            <BoxView AbsoluteLayout.LayoutBounds="105, 100, 200, 50" Color="LightPink"/>
+            <Label Text="Temperature" AbsoluteLayout.LayoutBounds="105, 100, 200, 50" TextColor="Maroon" FontSize="24" FontFamily="Arial" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Border AbsoluteLayout.LayoutBounds="105, 100, 200, 50"/>
+
+            <BoxView AbsoluteLayout.LayoutBounds="160, 220, 230, 100" Color="LightPink"/>
+            <Border AbsoluteLayout.LayoutBounds="160, 220, 230, 100"/>
+            <Label AbsoluteLayout.LayoutBounds="165, 220, 220, 100" x:Name="CurrentTemp" Text="Current Temperature is" TextColor="Maroon" FontSize="20" FontFamily="Arial" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+            <BoxView AbsoluteLayout.LayoutBounds="160, 360, 230, 100" Color="LightPink"/>
+            <Border AbsoluteLayout.LayoutBounds="160, 360, 230, 100"/>
+            <Label AbsoluteLayout.LayoutBounds="165, 350, 220, 100" Text="Optimal Temperatures:" TextColor="Maroon" FontSize="20" FontFamily="Arial" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label AbsoluteLayout.LayoutBounds="165, 370, 220, 100" Text="24-29°C" TextColor="Maroon" FontSize="20" FontFamily="Arial" VerticalOptions="Center" HorizontalOptions="Center"/>
 
 
-        <!--This is the menu icon-->
-        <BoxView AbsoluteLayout.LayoutBounds="20, 20, 40, 40" Color="White" x:Name="TempdotsBg"/>
-        <ImageButton Source="threedotx.svg" AbsoluteLayout.LayoutBounds="25, 25, 30, 30" Rotation="90" x:Name="TempDots" Clicked="TempDots_Clicked"/>
-        <Border AbsoluteLayout.LayoutBounds="20, 20, 40, 40"/>
-
-        <!--This is the settings icon-->
-        <BoxView AbsoluteLayout.LayoutBounds="20, 75, 40, 40" Color="White" x:Name="TempgearBg"/>
-        <ImageButton Source="gear.svg" AbsoluteLayout.LayoutBounds="25, 80, 30, 30" x:Name="TempGear" Clicked="TempGear_Clicked" IsVisible="False" IsEnabled="False"/>
-        <Border AbsoluteLayout.LayoutBounds="20, 75, 40, 40" x:Name="TempBorder1" IsVisible="False"/>
-
-        <!--This is the graph icon-->
-        <BoxView AbsoluteLayout.LayoutBounds="20, 130, 40, 40" Color="White" x:Name="TempgraphBg"/>
-        <ImageButton Source="graph.svg" AbsoluteLayout.LayoutBounds="25, 135, 30, 30" x:Name="TempGraph" Clicked="TempGraph_Clicked" IsVisible="False" IsEnabled="False"/>
-        <Border AbsoluteLayout.LayoutBounds="20, 130, 40, 40" x:Name="TempBorder2" IsVisible="False"/>
-
-        <!--This is the footer-->
-        <!--Boxes-->
-        <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="0, 770, 102, 70"/>
-        <BoxView BackgroundColor="LightGrey" AbsoluteLayout.LayoutBounds="103, 770, 102, 70"/>
-        <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="206, 770, 102, 70"/>
-        <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="309, 770, 102, 70"/>
-
-        <!--ImageButtons-->
-        <ImageButton Source="powerpagenull.svg" AbsoluteLayout.LayoutBounds="6, 780, 90, 40" x:Name="TempPump" Clicked="TempPump_Clicked"/>
-        <ImageButton Source="temperaturepage.svg"  AbsoluteLayout.LayoutBounds="109, 780, 90, 40" x:Name="TempTemperature" Clicked="TempTemperature_Clicked"/>
-        <ImageButton Source="humiditypagenull.svg" AbsoluteLayout.LayoutBounds="212, 780, 90, 40" x:Name="TempHumidity" Clicked="TempHumidity_Clicked"/>
-        <ImageButton Source="levelpagenull.svg" AbsoluteLayout.LayoutBounds="315, 780, 90, 40" x:Name="TempLevel" Clicked="TempLevel_Clicked"/>
-
-        <!--Borders-->
-        <Border AbsoluteLayout.LayoutBounds="0, 770, 411, 70"/>
-
-        <!--Text Labels-->
-        <Label Text="Pump" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="0, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
-        <Label Text="Temperature" FontSize="12" FontFamily="Arial" TextColor="White" AbsoluteLayout.LayoutBounds="103, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
-        <Label Text="Humidity" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="206, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
-        <Label Text="Water Level" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="309, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <BoxView AbsoluteLayout.LayoutBounds="160, 500, 230, 200" Color="LightPink"/>
+            <Border AbsoluteLayout.LayoutBounds="160, 500, 230, 200"/>
+            <Label AbsoluteLayout.LayoutBounds="165, 505, 220, 190" Text="The temperature is at an optimal level." TextColor="Maroon" FontSize="20" FontFamily="Arial" VerticalOptions="Center" HorizontalOptions="Center" x:Name="Description"/>
 
 
-    </AbsoluteLayout>
+            <!--This is the menu icon-->
+            <BoxView AbsoluteLayout.LayoutBounds="20, 20, 40, 40" Color="White" x:Name="TempdotsBg"/>
+            <ImageButton Source="threedotx.svg" AbsoluteLayout.LayoutBounds="25, 25, 30, 30" Rotation="90" x:Name="TempDots" Clicked="TempDots_Clicked"/>
+            <Border AbsoluteLayout.LayoutBounds="20, 20, 40, 40"/>
+
+            <!--This is the settings icon-->
+            <BoxView AbsoluteLayout.LayoutBounds="20, 75, 40, 40" Color="White" x:Name="TempgearBg"/>
+            <ImageButton Source="gear.svg" AbsoluteLayout.LayoutBounds="25, 80, 30, 30" x:Name="TempGear" Clicked="TempGear_Clicked" IsVisible="False" IsEnabled="False"/>
+            <Border AbsoluteLayout.LayoutBounds="20, 75, 40, 40" x:Name="TempBorder1" IsVisible="False"/>
+
+            <!--This is the graph icon-->
+            <BoxView AbsoluteLayout.LayoutBounds="20, 130, 40, 40" Color="White" x:Name="TempgraphBg"/>
+            <ImageButton Source="graph.svg" AbsoluteLayout.LayoutBounds="25, 135, 30, 30" x:Name="TempGraph" Clicked="TempGraph_Clicked" IsVisible="False" IsEnabled="False"/>
+            <Border AbsoluteLayout.LayoutBounds="20, 130, 40, 40" x:Name="TempBorder2" IsVisible="False"/>
+
+            <!--This is the footer-->
+            <!--Boxes-->
+            <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="0, 770, 102, 70"/>
+            <BoxView BackgroundColor="LightGrey" AbsoluteLayout.LayoutBounds="103, 770, 102, 70"/>
+            <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="206, 770, 102, 70"/>
+            <BoxView BackgroundColor="White" AbsoluteLayout.LayoutBounds="309, 770, 102, 70"/>
+
+            <!--ImageButtons-->
+            <ImageButton Source="powerpagenull.svg" AbsoluteLayout.LayoutBounds="6, 780, 90, 40" x:Name="TempPump" Clicked="TempPump_Clicked"/>
+            <ImageButton Source="temperaturepage.svg"  AbsoluteLayout.LayoutBounds="109, 780, 90, 40" x:Name="TempTemperature" Clicked="TempTemperature_Clicked"/>
+            <ImageButton Source="humiditypagenull.svg" AbsoluteLayout.LayoutBounds="212, 780, 90, 40" x:Name="TempHumidity" Clicked="TempHumidity_Clicked"/>
+            <ImageButton Source="levelpagenull.svg" AbsoluteLayout.LayoutBounds="315, 780, 90, 40" x:Name="TempLevel" Clicked="TempLevel_Clicked"/>
+
+            <!--Borders-->
+            <Border AbsoluteLayout.LayoutBounds="0, 770, 411, 70"/>
+
+            <!--Text Labels-->
+            <Label Text="Pump" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="0, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Text="Temperature" FontSize="12" FontFamily="Arial" TextColor="White" AbsoluteLayout.LayoutBounds="103, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Text="Humidity" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="206, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Text="Water Level" FontSize="12" FontFamily="Arial" TextColor="Black" AbsoluteLayout.LayoutBounds="309, 820, 102, 20" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+
+        </AbsoluteLayout>
+    </ScrollView>
+   
 </ContentPage>
